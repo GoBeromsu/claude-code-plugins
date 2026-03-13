@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Extract YouTube transcript and metadata via yt-dlp (with youtube-transcript-api fallback)."""
+"""Extract YouTube transcript and metadata.
+
+Transcript chain: defuddle (fastest, no rate limit) → yt-dlp → youtube-transcript-api.
+Metadata: always yt-dlp (lightweight --print query, rarely rate-limited).
+"""
 
 import argparse
 import random
@@ -36,6 +40,9 @@ _AUTO_LANG = "auto"
 _SRT_HTML_RE = re.compile(r"<[^>]+>")
 _SRT_SEQ_RE = re.compile(r"^\d+$")
 _SRT_TIME_RE = re.compile(r"^\d{2}:\d{2}:\d{2}")
+
+_DEFUDDLE_TS_RE = re.compile(r"\*\*\d+:\d+\*\* · ")
+_DEFUDDLE_ESCAPED_BRACKET_RE = re.compile(r"\\([\[\]])")
 
 _FNAME_UNSAFE_RE = re.compile(r'[/\\:*?"<>|#^ㅣ]')
 _FNAME_MULTI_SPACE_RE = re.compile(r" {2,}")
@@ -227,8 +234,31 @@ def fetch_metadata(video_id: str, config: FetchConfig) -> VideoMetadata:
     )
 
 
+def fetch_transcript_defuddle(video_id: str, config: FetchConfig) -> tuple[str, str]:
+    """Tier 1: extract transcript via defuddle (fastest, no rate limiting)."""
+    url = f"https://www.youtube.com/watch?v={video_id}"
+    result = run_cmd(["defuddle", "parse", url, "--md"], timeout=config.timeout_subtitle)
+
+    if result.returncode != 0:
+        raise RuntimeError(f"defuddle failed: {result.stderr.strip()}")
+
+    match = re.search(r"^## Transcript\s*\n(.+?)(?=^## |\Z)", result.stdout, re.DOTALL | re.MULTILINE)
+    if not match:
+        raise RuntimeError("defuddle: no ## Transcript section found")
+
+    # Strip **H:MM** · timestamp prefixes, unescape brackets, collapse whitespace
+    text = _DEFUDDLE_TS_RE.sub("", match.group(1))
+    text = _DEFUDDLE_ESCAPED_BRACKET_RE.sub(r"\1", text)
+    text = " ".join(text.split())
+
+    if not text:
+        raise RuntimeError("defuddle: transcript section was empty after cleaning")
+
+    return text, "defuddle"
+
+
 def fetch_transcript_ytdlp(video_id: str, config: FetchConfig) -> tuple[str, str]:
-    """Primary: download SRT subtitle via yt-dlp."""
+    """Tier 2: download SRT subtitles via yt-dlp."""
     with tempfile.TemporaryDirectory() as tmpdir:
         cmd = [
             "yt-dlp",
@@ -321,19 +351,28 @@ def fetch_transcript_api(video_id: str, config: FetchConfig) -> tuple[str, str]:
 
 
 def fetch_transcript(video_id: str, config: FetchConfig) -> tuple[str, str]:
-    """Try yt-dlp first unless forced to API, then fallback to youtube-transcript-api."""
+    """Chain: defuddle → yt-dlp → youtube-transcript-api."""
     if config.force_api:
         print("Using youtube-transcript-api only mode.", file=sys.stderr)
         return fetch_transcript_api(video_id, config)
 
+    # Tier 1: defuddle (fastest, no rate limiting)
+    try:
+        return fetch_transcript_defuddle(video_id, config)
+    except Exception as exc:
+        print(f"defuddle failed ({type(exc).__name__}): {exc}", file=sys.stderr)
+
+    # Tier 2: yt-dlp (SRT subtitles)
     try:
         return fetch_transcript_ytdlp(video_id, config)
-    except Exception as e:
+    except Exception as exc:
         if config.no_fallback:
             raise
-        print(f"yt-dlp failed ({e.__class__.__name__}): {e}", file=sys.stderr)
-        print("Falling back to youtube-transcript-api...", file=sys.stderr)
-        return fetch_transcript_api(video_id, config)
+        print(f"yt-dlp failed ({type(exc).__name__}): {exc}", file=sys.stderr)
+
+    # Tier 3: youtube-transcript-api
+    print("Falling back to youtube-transcript-api...", file=sys.stderr)
+    return fetch_transcript_api(video_id, config)
 
 
 def clean_srt(srt: str) -> str:
@@ -362,9 +401,9 @@ def clean_srt(srt: str) -> str:
     return " ".join(deduped)
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Extract YouTube transcript via yt-dlp (fallback: youtube-transcript-api)"
+        description="Extract YouTube transcript via defuddle / yt-dlp / youtube-transcript-api"
     )
     parser.add_argument("url", help="YouTube URL or video ID")
     parser.add_argument("-o", "--output", help="Output file path")

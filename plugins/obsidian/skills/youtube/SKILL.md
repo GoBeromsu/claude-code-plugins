@@ -97,7 +97,7 @@ For each chapter in order, one Edit replacing `<!-- ICT:PENDING -->`:
 - **Every sentence must appear** — rewrite, don't omit. This is the whole point.
 - Remove only filler/stutters; preserve examples, anecdotes, data, Q&A verbatim
 - End with complete sentence + proper punctuation
-- Append a `mermaid` diagram after the prose visualizing the key concept (flowchart, decision tree, or cycle). Follow the `obsidian-mermaid` skill rules: labels under 15 chars, no `<br/>` or markdown in labels, prefer square layout (TB + subgraph LR), cap at 5 nodes
+- After each chapter's prose, append a mermaid diagram visualizing the key concept. Use `/obsidian-mermaid` skill rules. Choose the best diagram type (flowchart, sequence, mindmap, state). Cap at 5 nodes. If a mermaid block already exists, replace it.
 
 **Long video handling** (3+ chunk files): Process one chunk file at a time — read a chunk, rewrite the corresponding chapter(s), Edit into skeleton, then move to the next chunk. Never attempt to hold the full transcript in working memory at once.
 
@@ -158,6 +158,7 @@ author: ["<author_link>"]
 date_created: YYYY-MM-DD
 date_modified: YYYY-MM-DD
 image: "https://img.youtube.com/vi/<video_id>/maxresdefault.jpg"
+review: "[[<sanitized_title>.review]]"
 source: "<youtube url>"
 speaker: []
 status: done
@@ -177,7 +178,8 @@ When the target file already exists:
 1. **Read the file first** — identify personal content scattered across sections (`## 공명`, `## Thinking`, `## Linking`, `## Summary` subsections like Analogy/Insights, user notes, personal callouts)
 2. **Consolidate into `## 공명`** — move all personal content under a single `## 공명` section; demote their headings to `####` subsections within it (e.g. `#### Linking`, `#### 💡 Insights`); remove the now-empty `## Linking`, `## Summary`, `## Thinking` shells
 3. **Replace only** the raw transcript section (lines with `- HH:MM timestamps`) and any skeleton ICT sections
-4. Keep existing YAML fields; only add missing ones (`status`, `speaker`)
+4. Keep existing YAML fields; only add missing ones (`status`, `speaker`, `review`)
+5. Existing mermaid blocks will be replaced during Phase 3 (ICT agent handles mermaid inline)
 
 ## Multiple URLs
 
@@ -187,11 +189,11 @@ Extract all transcripts in parallel first (one Bash call each), then follow the 
 
 - No captions / private video → skip + report
 - Clipping already exists + raw transcript → reprocess, preserving personal sections (see above)
-- Clipping already exists + already processed → skip + notify
 - Truncation detected → `status: reviewed`
 
 ## Notes
 
-- Requires `yt-dlp` (`brew install yt-dlp`); no venv or extra deps needed
+- Transcript extraction uses a 3-tier fallback chain: defuddle (fastest, no rate limit) → yt-dlp → youtube-transcript-api
+- Requires `defuddle` (`npm install -g defuddle`) and `yt-dlp` (`brew install yt-dlp`); no venv or extra deps needed
 - Accepts full YouTube URLs, youtu.be, shorts, or bare 11-char video IDs
 - For yt-dlp mode behavior (flat-playlist limitations, date filtering patterns, RSS alternative): see `references/yt-dlp-modes.md`
