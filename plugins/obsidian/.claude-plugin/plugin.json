@@ -2,5 +2,5 @@
   "name": "obsidian",
   "description": "Obsidian vault management: YouTube transcript clipping, headless sync, mermaid diagrams, and terminology notes",
   "version": "1.0.0",
-  "author": "beomsu"
+  "author": { "name": "Beomsu Koh" }
 }

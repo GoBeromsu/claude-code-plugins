@@ -2,5 +2,5 @@
   "name": "common",
   "description": "General-purpose tools: Barbell Strategy (antifragile), 5 Whys root-cause analysis, First Principles thinking, structured plan interviews, and anti-bot web scraping",
   "version": "1.0.0",
-  "author": "beomsu"
+  "author": { "name": "Beomsu Koh" }
 }
