@@ -1,6 +1,6 @@
 {
   "name": "obsidian",
-  "description": "Obsidian vault management utilities: headless sync between machines and automated vault health checking with stale path detection and fixing",
+  "description": "Obsidian vault management: headless sync between machines using obsidian-headless",
   "version": "1.0.0",
   "author": "beomsu"
 }

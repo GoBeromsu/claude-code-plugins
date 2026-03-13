@@ -6,7 +6,6 @@ Developer workflow utilities for Claude Code.
 
 | Skill | Description |
 |-------|-------------|
-| `/dev-tools:estimate` | Estimate complexity and effort for any task |
 | `/dev-tools:issue` | Create well-structured GitHub issues |
 | `/dev-tools:docs` | Write technical documents (Toss writing principles) |
 | `/dev-tools:project-log` | Log findings and decisions to project notes |
