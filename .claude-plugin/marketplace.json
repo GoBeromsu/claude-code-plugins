@@ -3,7 +3,7 @@
   "name": "beomsu-plugins",
   "description": "Custom Claude Code plugins: thinking tools, Obsidian vault management, and developer workflows",
   "owner": {
-    "name": "beomsu",
+    "name": "Beomsu Koh",
     "email": "gobeumsu@gmail.com"
   },
   "plugins": [
@@ -12,7 +12,7 @@
       "description": "General-purpose tools: Barbell Strategy (antifragile), 5 Whys root-cause analysis, First Principles thinking, structured plan interviews, and anti-bot web scraping",
       "version": "1.0.0",
       "author": {
-        "name": "beomsu"
+        "name": "Beomsu Koh"
       },
       "source": "./plugins/common",
       "category": "productivity"
@@ -22,7 +22,7 @@
       "description": "Developer workflow utilities: GitHub issue creation, technical documentation, and project logging",
       "version": "1.0.0",
       "author": {
-        "name": "beomsu"
+        "name": "Beomsu Koh"
       },
       "source": "./plugins/development",
       "category": "development"
@@ -32,7 +32,7 @@
       "description": "Obsidian vault management: YouTube transcript clipping, headless sync, mermaid diagrams, and terminology notes",
       "version": "1.0.0",
       "author": {
-        "name": "beomsu"
+        "name": "Beomsu Koh"
       },
       "source": "./plugins/obsidian",
       "category": "productivity"
