@@ -8,7 +8,7 @@ A collection of custom Claude Code plugins for decision-making, developer workfl
 |--------|--------|-------------|
 | [common](plugins/common/) | antifragile, 5whys, first-principles, interview, scrapling | General-purpose tools |
 | [development](plugins/development/) | issue, docs, project-log | Developer workflow utilities |
-| [obsidian](plugins/obsidian/) | obsidian-sync | Obsidian vault management |
+| [obsidian](plugins/obsidian/) | obsidian-sync, terminology, youtube | Obsidian vault management |
 
 ## Install
 
