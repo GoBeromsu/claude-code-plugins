@@ -2,6 +2,7 @@
 name: interview
 description: "Conducts an in-depth, non-obvious interview about a plan/design/decision using AskUserQuestion, probing assumptions, edge cases, tradeoffs, and failure modes before implementation. Use before implementing, when validating a plan, or during design review. Triggers: /interview, '인터뷰해줘', '질문해줘 내 계획에 대해', '계획에 대해 물어봐줘', 'plan 리뷰해줘', '이 계획 검증해줘', 'blind spot 찾아줘', '가정 도전해줘', 'implement 전에 검토해줘', '구멍 찾아줘', or when user wants to be questioned about their plan. NOT for simple Q&A, general chat, asking Claude to answer questions, code review, debugging, or explaining concepts."
 argument-hint: [plan]
+model: opus
 ---
 
 ## Purpose
