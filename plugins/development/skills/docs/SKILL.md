@@ -6,8 +6,7 @@ description: >
   학습 중심 (tutorial/getting-started), 문제 해결 (how-to/troubleshooting),
   참조 (API reference), 설명 (explanation/concept).
   Use when: (1) user invokes /docs, (2) user needs to write a structured technical
-  document. For PKM terminology notes in an Obsidian vault, use the terminology
-  skill instead.
+  document.
 ---
 
 # docs — Technical Document Writer
@@ -32,7 +31,7 @@ Write documents that are readable on the first pass. Apply Toss's four writing p
 1. **Clarity** — One reading, full comprehension. Specific nouns over pronouns. Define terms once at first appearance.
 2. **Conciseness** — One core idea per sentence. Remove modifiers and auxiliary verbs that add no meaning.
 3. **Consistency** — Same term for same concept throughout. Core academic terms in English; general verbs in Korean.
-4. **Integrity** — Every claim has a verifiable source. Verify URLs before citing. Use `defuddle` for web content extraction where available.
+4. **Integrity** — Every claim has a verifiable source. Verify URLs before citing.
 
 ## Korean-English Mixing
 
@@ -52,8 +51,6 @@ Identify the reader's state and purpose, then load the matching reference file.
 | 기본 사용법 앎 | API/함수 사양 확인 | 참조 | `references/api-reference.md` |
 | 제한 없음 | 개념·원리·배경 깊이 이해 | 설명 | `references/explanation.md` |
 
-For PKM terminology notes, use the **terminology** skill instead.
-
 ## Document Language
 
 Write the document in the language the user explicitly requests. If not specified, match the language of the user's input (Korean input → Korean document; English input → English document).
@@ -68,7 +65,7 @@ Use the table above to identify type and load the matching reference file. If am
 
 Before writing, apply `references/structure-principles.md`:
 - Define the single topic and its value proposition
-- Draft the overview paragraph (1–3 sentences, value-first)
+- Draft the overview paragraph (1-3 sentences, value-first)
 - Sketch heading hierarchy (max H4)
 - Set the title (≤30 chars, keyword-first, noun or verb form, no questions)
 

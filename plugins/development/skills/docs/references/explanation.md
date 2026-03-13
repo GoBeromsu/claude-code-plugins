@@ -2,8 +2,6 @@
 
 독자가 개념·원리·배경을 깊이 이해할 수 있도록 돕는 문서.
 
-**PKM 용어 노트(Terminology note)는 이 유형의 특화 변형이다.** 학술 출처와 Literature Review가 필요하면 `terminology.md`를 사용하라.
-
 ## 두 가지 하위 유형
 
 | 유형 | 특징 |

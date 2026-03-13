@@ -1,0 +1,41 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "beomsu-plugins",
+  "description": "Custom Claude Code plugins: thinking tools, Obsidian vault management, and developer workflows",
+  "owner": {
+    "name": "beomsu",
+    "email": "gobeumsu@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "common",
+      "description": "General-purpose tools: Barbell Strategy (antifragile), 5 Whys root-cause analysis, First Principles thinking, structured plan interviews, and anti-bot web scraping",
+      "version": "1.0.0",
+      "author": {
+        "name": "beomsu"
+      },
+      "source": "./plugins/common",
+      "category": "productivity"
+    },
+    {
+      "name": "development",
+      "description": "Developer workflow utilities: GitHub issue creation, technical documentation, and project logging",
+      "version": "1.0.0",
+      "author": {
+        "name": "beomsu"
+      },
+      "source": "./plugins/development",
+      "category": "development"
+    },
+    {
+      "name": "obsidian",
+      "description": "Obsidian vault management: YouTube transcript clipping, headless sync, mermaid diagrams, and terminology notes",
+      "version": "1.0.0",
+      "author": {
+        "name": "beomsu"
+      },
+      "source": "./plugins/obsidian",
+      "category": "productivity"
+    }
+  ]
+}
