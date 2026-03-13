@@ -7,6 +7,7 @@ Obsidian vault management utilities for Claude Code.
 | Skill | Description |
 |-------|-------------|
 | `/obsidian:obsidian-sync` | Manage headless Obsidian Sync between machines |
+| `/obsidian:terminology` | Create, rewrite, and consolidate PKM terminology notes with variant detection and duplicate merging |
 
 ## Prerequisites
 
