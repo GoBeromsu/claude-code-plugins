@@ -17,7 +17,7 @@ Obsidian vault management utilities for Claude Code.
 ## Install
 
 ```bash
-claude plugin add github:beomsu/claude-code-plugins --path plugins/obsidian
+claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/obsidian
 ```
 
 ## License

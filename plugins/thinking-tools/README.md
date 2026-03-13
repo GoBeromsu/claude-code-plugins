@@ -14,7 +14,7 @@ Decision-making and analysis frameworks for Claude Code.
 ## Install
 
 ```bash
-claude plugin add github:beomsu/claude-code-plugins --path plugins/thinking-tools
+claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/thinking-tools
 ```
 
 ## License

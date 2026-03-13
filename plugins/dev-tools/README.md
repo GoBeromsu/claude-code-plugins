@@ -18,7 +18,7 @@ Developer workflow utilities for Claude Code.
 ## Install
 
 ```bash
-claude plugin add github:beomsu/claude-code-plugins --path plugins/dev-tools
+claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/dev-tools
 ```
 
 ## License

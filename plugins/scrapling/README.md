@@ -23,7 +23,7 @@ scrapling install    # downloads Playwright browsers (~100MB)
 ## Install
 
 ```bash
-claude plugin add github:beomsu/claude-code-plugins --path plugins/scrapling
+claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/scrapling
 ```
 
 ## License
