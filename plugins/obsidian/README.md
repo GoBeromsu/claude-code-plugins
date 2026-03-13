@@ -9,6 +9,7 @@ Obsidian vault management utilities for Claude Code.
 | `/obsidian:obsidian-sync` | Manage headless Obsidian Sync between machines |
 | `/obsidian:terminology` | Create, rewrite, and consolidate PKM terminology notes with variant detection and duplicate merging |
 | `/obsidian:youtube` | Extract YouTube transcripts and convert into Korean article clippings |
+| `/obsidian:obsidian-mermaid` | Create Obsidian-compatible Mermaid diagrams with correct syntax |
 
 ## Prerequisites
 
