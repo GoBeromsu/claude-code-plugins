@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "beomsu-plugins",
+  "name": "beomsu-koh",
   "description": "Custom Claude Code plugins: thinking tools, Obsidian vault management, and developer workflows",
   "owner": {
     "name": "Beomsu Koh",
