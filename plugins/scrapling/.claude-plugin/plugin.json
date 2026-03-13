@@ -1,0 +1,6 @@
+{
+  "name": "scrapling",
+  "description": "Anti-bot web scraping with Scrapling — bypasses Cloudflare, anti-bot protection, and JS-rendered pages. Three-tier escalation: fast HTTP, stealth browser, full browser",
+  "version": "1.0.0",
+  "author": "beomsu"
+}

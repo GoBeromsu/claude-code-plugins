@@ -1,0 +1,6 @@
+{
+  "name": "dev-tools",
+  "description": "Developer workflow utilities: task estimation, GitHub issue creation, technical documentation, and project logging",
+  "version": "1.0.0",
+  "author": "beomsu"
+}
