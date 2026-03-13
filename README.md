@@ -7,7 +7,7 @@ A collection of custom Claude Code plugins for decision-making, developer workfl
 | Plugin | Skills | Description |
 |--------|--------|-------------|
 | [common](plugins/common/) | antifragile, 5whys, first-principles, interview, scrapling | General-purpose tools |
-| [dev-tools](plugins/dev-tools/) | issue, docs, project-log | Developer workflow utilities |
+| [development](plugins/development/) | issue, docs, project-log | Developer workflow utilities |
 | [obsidian](plugins/obsidian/) | obsidian-sync | Obsidian vault management |
 
 ## Install
@@ -17,7 +17,7 @@ A collection of custom Claude Code plugins for decision-making, developer workfl
 claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/common
 
 # Or install multiple
-claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/dev-tools
+claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/development
 claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/obsidian
 ```
 
