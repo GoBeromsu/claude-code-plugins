@@ -6,19 +6,20 @@ A collection of custom Claude Code plugins for decision-making, developer workfl
 
 | Plugin | Skills | Description |
 |--------|--------|-------------|
-| [common](plugins/common/) | antifragile, 5whys, first-principles, interview, scrapling | General-purpose tools |
+| [common](plugins/common/) | antifragile, 5whys, first-principles, interview, scrapling | General-purpose thinking & scraping tools |
 | [development](plugins/development/) | issue, docs, project-log | Developer workflow utilities |
 | [obsidian](plugins/obsidian/) | obsidian-sync, terminology, youtube, obsidian-mermaid | Obsidian vault management |
 
 ## Install
 
 ```bash
-# Install a specific plugin
-claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/common
+# Add marketplace
+claude plugins marketplace add GoBeromsu/claude-code-plugins
 
-# Or install multiple
-claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/development
-claude plugin add github:GoBeromsu/claude-code-plugins --path plugins/obsidian
+# Install plugins (user scope)
+claude plugins install common@beomsu-koh --scope user
+claude plugins install development@beomsu-koh --scope user
+claude plugins install obsidian@beomsu-koh --scope user
 ```
 
 ## License
